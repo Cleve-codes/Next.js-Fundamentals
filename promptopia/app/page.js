@@ -2,6 +2,7 @@ export default function Home() {
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
+      {/* <h1 className="text-white"> */}
         Discover & Share
         <br />
         <br className="max-md:hidden" />

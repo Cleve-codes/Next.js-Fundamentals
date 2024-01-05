@@ -24,11 +24,15 @@ const Nav = () => {
       {/* Mobile Navigation */}
       <div className="sm:flex hidden">
         {isLoggedIn ? (
+          <>
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-propmt" className="black_btn">
+            <Link href="/create-propmt" className="bg-black text-white">
               Create Post
             </Link>
           </div>
+
+          <button type="submit" onClick={signOut} className="outline_btn" >Sign Out</button>
+          </>
         ) : (
           <></>
         )}
