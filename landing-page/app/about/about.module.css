@@ -29,6 +29,10 @@
   position: relative;
 }
 
+.aboutImg{
+  object-fit: contain;
+}
+
 .boxes {
   display: flex;
   align-items: center;
