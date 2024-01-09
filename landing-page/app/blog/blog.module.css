@@ -1,6 +1,6 @@
-.container{
+.container {
   display: flex;
-  flex-grow: wrap;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -19,4 +19,3 @@
     width: 100%;
   }
 }
-

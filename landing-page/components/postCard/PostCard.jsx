@@ -4,22 +4,19 @@ import Link from 'next/link'
 import styles from './postcard.module.css'
 
 
-const PostCard = () => {
+const PostCard = ({post}) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
-          <Image src="/post.png" alt="contact" fill className={styles.img} />
+          <Image src="/bob.png" alt="contact" fill className={styles.img} />
         </div>
         <span className={styles.date}>09.01.2024</span>
       </div>
       <div className={styles.bottom}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{post.title}</h1>
         <p className={styles.desc}>
-            Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Nihil eum debitis
-            assumenda accusantium, dolores explicabo minus
-            exercitationem velit consequatur eligendi.
+            {post.body}
         </p>
         <Link className={styles.link} href='/blog/post'>
           Read More
