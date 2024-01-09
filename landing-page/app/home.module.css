@@ -51,7 +51,11 @@
 @media (max-width: 1024px){
   .container {
     flex-direction: column;
+    text-align: center;
+  }
 
+  .buttons {
+    justify-content: center;
   }
 }
 
