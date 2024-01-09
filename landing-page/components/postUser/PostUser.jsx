@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './postUser.module.css'
 
 const getData = async(userId) => {
-    const data = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+    const data = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {cache: "no-store"})
 
     if(!data.ok) {
         throw new Error("Something went wrong")
