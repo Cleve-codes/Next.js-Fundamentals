@@ -1,3 +1,7 @@
+import { Post, User } from "./models";
+import { connectToDb } from "./utils";
+import { unstable_noStore as noStore} from 'next/cache'
+
 // const users = [
 //   { id: 1, name: 'John Doe', email: 'johndoegmail.com' },
 //   { id: 2, name: 'Jane Doe', email: 'janedoegmail.com' },
@@ -13,14 +17,12 @@
 //   { id: 4, title: 'Lorem Ipsum', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien ultricies nunc, eget ultricies nisl nisl eget urna. Sed euismod, nisl eget ultricies aliquam, nunc sapien ultricies nunc, eget ultricies nisl nisl eget urna.', userId: 3 },
 // ]
 
-import { Post, User } from "./models";
-import { connectToDb } from "./utils";
+
 
 export const getPosts = async () => {
   try{
     connectToDb()
     const posts = await Post.find()
-    console.log(posts)
     return posts;
   } catch(err) {
     console.log(err)
@@ -53,7 +55,7 @@ export const getUsers = async () => {
 }
 
 export const getUser = async (id) => {
-
+  noStore()
   try{
     connectToDb();
     const user = User.findById(id)

@@ -5,13 +5,15 @@ import styles from './postcard.module.css'
 
 
 const PostCard = ({post}) => {
+
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
           <Image src={`${post.img} ? ${post.img} :"/bob.png"`} alt="contact" fill className={styles.img} />
         </div>
-        <span className={styles.date}>09.01.2024</span>
+        <span className={styles.date}>{new Date(post.createdAt).toLocaleDateString()}</span>
       </div>
       <div className={styles.bottom}>
         <h1 className={styles.title}>{post.title}</h1>

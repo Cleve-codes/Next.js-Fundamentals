@@ -32,13 +32,13 @@ const SinglePostPage = async ({params}) => {
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.detail}>
-          <Image src='/snoop.jpg' alt='Avatar' className={styles.avatar} width={50} height={50} />
-          {/* {post && <Suspense fallback={<div>Loading...</div>}>
+
+          {post && <Suspense fallback={<div>Loading...</div>}>
           <PostUser userId={post.userId} />
-          </Suspense>} */}
+          </Suspense>}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>&nbsp;01.01.2023</span>
+            <span className={styles.detailValue}>&nbsp;{new Date(post?.createdAt).toLocaleDateString(undefined, {day: 'numeric', month: "long", year: 'numeric'})}</span>
           </div>
         </div>
         <div className={styles.content}>
