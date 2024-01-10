@@ -13,6 +13,12 @@ import { getPosts } from '../../lib/data'
 //   return res.json()
 // }
 
+export const metadata = {
+  title: 'Blog',
+  description: 'Blog page',
+  keywords: 'blog, page',
+}
+
 const page = async() => {
 
   // const posts = await getData()
