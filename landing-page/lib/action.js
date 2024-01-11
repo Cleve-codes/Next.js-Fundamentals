@@ -53,10 +53,12 @@ export const handleLogout = async () => {
   await signOut()
 }
 
-export const register = async (formData) => {
+export const register = async (previousState, formData) => {
   const { username, email, password, passwordRepeat, img } = Object.fromEntries(formData);
 
-  if(password !== passwordRepeat) { return "Passwords aren't matching"}
+  if(password !== passwordRepeat) {
+    return {error: "Passwords aren't matching"}
+  }
 
   try {
     connectToDb();
@@ -77,25 +79,25 @@ export const register = async (formData) => {
 
     await newUser.save()
     console.log("Saved to DB")
+    return {success: true}
   } catch(err) {
     console.log(err)
     return { error: "something went wrong" }
   }
 }
 
-export const login = async (formData) => {
-  const { username, password} = Object.fromEntries(formData);
-  try{
-    connectToDb();
+export const login = async (prevState, formData) => {
+  const { username, password } = Object.fromEntries(formData);
 
-    await signIn("credentials", {
-      username,
-      password,
-      // redirect: false,
-    })
+  try {
+    await signIn("credentials", { username, password });
+    return { success: true };
+  } catch (err) {
+    console.log(err);
 
-  } catch(err) {
-    console.log(err)
+    if (err.message.includes("CredentialsSignin")) {
+      return { error: "Invalid username or password" };
+    }
+    throw err;
   }
-
-}
+};
