@@ -22,7 +22,7 @@ export const addPost = async (formData) => {
 
 
     await newPost.save()
-    console.log("Saved to DB")
+
     revalidatePath("/blog")
   } catch (error) {
     console.log(error);
