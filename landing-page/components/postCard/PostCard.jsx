@@ -11,7 +11,7 @@ const PostCard = ({post}) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
-          <Image src={`${post.img} ? ${post.img} :"/bob.png"`} alt="contact" fill className={styles.img} />
+          <Image src={post ? `${post.img}` : "/bob.png"} alt="contact" fill className={styles.img} />
         </div>
         <span className={styles.date}>{new Date(post.createdAt).toLocaleDateString()}</span>
       </div>

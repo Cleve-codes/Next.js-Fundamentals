@@ -5,15 +5,15 @@ import PostUser from '../../../components/postUser/PostUser'
 import { getPost } from '../../../lib/data'
 
 // Data Fecthing using an API
-// const getData = async(slug) => {
-//     const data = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`)
+const getData = async(slug) => {
+    const data = await fetch(`http://localhost:3000/api/blog/${slug}`)
 
-//     if(!data.ok) {
-//         throw new Error("Something went wrong")
-//     }
+    if(!data.ok) {
+        throw new Error("Something went wrong")
+    }
 
-//     return data.json()
-// }
+    return data.json()
+}
 
 // Data Fetching without API
 
@@ -33,7 +33,8 @@ const SinglePostPage = async ({params}) => {
 
   const {slug} = params
 
-  const post = await getPost(slug)
+  const post = await getData(slug)
+  // const post = await getPost(slug)
 
 
   return (

@@ -1,13 +1,12 @@
 import React from 'react'
-import { serverAction } from '../../lib/action'
+import { addPost } from '../../lib/action'
 
 const Page = () => {
   return (
-    <form action={serverAction} className='flex gap-[2em]'>
-        <input name='name' type='text' placeholder='Name' />
-        <input name='email' type='email' placeholder='Email' />
-        <input name='message' type='text' placeholder='Message' />
-        <button type='submit'>Submit</button>
+    <form action={ addPost} className='flex gap-[2em]'>
+        <input name='title' type='text' placeholder='title' />
+        <input name='desc' type='text' placeholder='Email' />
+        <button type='submit'>create</button>
     </form>
   )
 }
