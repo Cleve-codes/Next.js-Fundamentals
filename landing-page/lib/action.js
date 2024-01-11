@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { Post, User } from "./models";
 import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export const addPost = async (formData) => {
   "use server"
@@ -81,4 +81,21 @@ export const register = async (formData) => {
     console.log(err)
     return { error: "something went wrong" }
   }
+}
+
+export const login = async (formData) => {
+  const { username, password} = Object.fromEntries(formData);
+  try{
+    connectToDb();
+
+    await signIn("credentials", {
+      username,
+      password,
+      // redirect: false,
+    })
+
+  } catch(err) {
+    console.log(err)
+  }
+
 }
