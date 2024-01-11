@@ -6,7 +6,10 @@ import Footer from '../components/footer/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Next FullStack App',
+  title: {
+    default: 'Next.js Homepage',
+    template: '%s | Next.js 14',
+  },
   description: 'A fullstack landing page app built with Next.js',
 }
 

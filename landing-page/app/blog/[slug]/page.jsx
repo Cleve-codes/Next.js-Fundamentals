@@ -17,6 +17,18 @@ import { getPost } from '../../../lib/data'
 
 // Data Fetching without API
 
+const generateMetadata = async(slug) => {
+  const post = await getPost(slug)
+
+  return {
+    title: post.title,
+    description: post.desc,
+    keywords: post.title,
+  }
+
+}
+
+
 const SinglePostPage = async ({params}) => {
 
   const {slug} = params
