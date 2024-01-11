@@ -6,7 +6,7 @@ import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
 
-export const addPost = async (formData) => {
+export const addPost = async (prevState, formData) => {
   "use server"
   const {title, desc} = Object.fromEntries(formData);
   let slug = title.toLowerCase().split(" ").join("-");
@@ -26,6 +26,7 @@ export const addPost = async (formData) => {
     await newPost.save()
 
     revalidatePath("/blog")
+    revalidatePath("/admin")
   } catch (error) {
     console.log(error);
   }
@@ -37,6 +38,45 @@ export const deletePost = async (id) => {
     await Post.findByIdAndDelete(id);
     console.log("Deleted from DB")
     revalidatePath("/blog")
+    revalidatePath("/admin")
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+
+export const addUser = async (prevState, formData) => {
+  "use server"
+  const {username, email, img, password} = Object.fromEntries(formData);
+  let slug = title.toLowerCase().split(" ").join("-");
+
+
+  try {
+    connectToDb();
+    const newUser = new User({
+      username,
+      password,
+      email,
+      img : img ? img : `https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`,
+      userId: 12,
+    })
+
+
+    await newUser.save()
+
+    revalidatePath("/admin")
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const deleteUser = async (id) => {
+  try{
+    connectToDb();
+    await Post.deleteMany({userId: id});
+    await User.findByIdAndDelete(id);
+    console.log("Deleted from DB")
+    revalidatePath("/admin")
   }
   catch(error){
     console.log(error)
