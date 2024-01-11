@@ -1,11 +1,10 @@
-const { signIn } = require("../../lib/auth")
+const { signIn, auth } = require("../../lib/auth")
+import { handleGithubLogin } from "../../lib/action";
 
-const LoginPage = () => {
+const LoginPage = async () => {
 
-  const handleGithubLogin = async () => {
-    "use server"
-     await signIn("github")
-  }
+  const session = await auth();
+  console.log(session)
 
   return (
     <div>
