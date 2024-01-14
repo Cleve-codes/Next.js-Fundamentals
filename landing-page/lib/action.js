@@ -5,6 +5,7 @@ import { Post, User } from "./models";
 import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
+import { getUser } from "./data";
 
 export const addPost = async (prevState, formData) => {
   "use server"
@@ -138,6 +139,19 @@ export const login = async (prevState, formData) => {
     if (err.message.includes("CredentialsSignin")) {
       return { error: "Invalid username or password" };
     }
+
+    if (err.message.includes("No User Found")) {
+      return { error: "Invalid username or password" };
+    }
+
     throw err;
   }
 };
+
+export const logout = async() => {
+  try{
+    const user = await getUser()
+  } catch(err) {
+
+  }
+}

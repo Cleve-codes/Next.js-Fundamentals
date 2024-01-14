@@ -16,11 +16,6 @@ const Home = () => {
       <div className={styles.buttons}>
         <button className={styles.button}>Learn More</button>
         <button className={styles.button}>Contact</button>
-        {/* <Link href="/resume.pdf" download="resume.pdf" className={styles.button}> */}
-        <a href='/resume.pdf' download="resume.pdf" className={styles.button} >
-            Download Resume
-        </a>
-        {/* </Link> */}
       </div>
       <div className={styles.brands}>
         <Image src="/brands.png" className={styles.brandImg} alt='brands' fill />
