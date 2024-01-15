@@ -147,11 +147,3 @@ export const login = async (prevState, formData) => {
     throw err;
   }
 };
-
-export const logout = async() => {
-  try{
-    const user = await getUser()
-  } catch(err) {
-
-  }
-}
